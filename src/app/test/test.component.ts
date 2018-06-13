@@ -29,8 +29,20 @@ import { Component, OnInit } from '@angular/core';
 
     <h2 [ngClass]="messageClasses">My Angular</h2>
 
+    <h2 [style.color]="'orange'">Style Biding</h2>
 
+    <h2 [style.color]="hasError ? 'red': 'green'">Style Biding</h2>
 
+    <h2 [style.color]="highlightColor">Style Biding</h2>
+
+    <h2 [ngStyle]="titleStyles">Style Biding 3</h2>
+    <hr>
+    <h2>Event</h2>
+    <h3>{{ user }}</h3>
+    <button (click)="onClick($event)">Greet</button>
+
+    <button (click)="greeting = 'Welcome Angular'">Greet</button>
+    <p>{{ greeting }}</p>
   `,
   //styleUrls: ['./test.component.css'],
   styles: [
@@ -67,6 +79,12 @@ export class TestComponent implements OnInit {
     'text-danger': this.hasError,
     'text-special': this.isSpecial
   };
+  public highlightColor = 'orange';
+  public titleStyles = {
+    color: 'blue',
+    fontStyle: 'italic'
+  };
+  public greeting = '';
 
   constructor() {}
 
@@ -74,5 +92,10 @@ export class TestComponent implements OnInit {
 
   greetUser() {
     return 'Hello ' + this.user;
+  }
+
+  onClick(event) {
+    console.log(event);
+    this.greeting = 'Welcome to JD';
   }
 }
