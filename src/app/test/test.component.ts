@@ -43,6 +43,17 @@ import { Component, OnInit } from '@angular/core';
 
     <button (click)="greeting = 'Welcome Angular'">Greet</button>
     <p>{{ greeting }}</p>
+
+    <hr>
+    <h2>Template reference Variables</h2>
+    <input #myInput type="text">
+    <button (click)="logMessage(myInput.value)">Log</button>
+
+    <hr>
+    <h2>Two Way Biding</h2>
+    <input [(ngModel)]="nombre" type="text">
+    {{ nombre }}
+
   `,
   //styleUrls: ['./test.component.css'],
   styles: [
@@ -85,6 +96,8 @@ export class TestComponent implements OnInit {
     fontStyle: 'italic'
   };
   public greeting = '';
+  public nombre = '';
+  public password = '';
 
   constructor() {}
 
@@ -97,5 +110,9 @@ export class TestComponent implements OnInit {
   onClick(event) {
     console.log(event);
     this.greeting = 'Welcome to JD';
+  }
+
+  logMessage(value) {
+    console.log(value);
   }
 }
